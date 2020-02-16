@@ -33,7 +33,7 @@ class DatastoreJournal(config: Config, configPath: String) extends AsyncWriteJou
   override def asyncWriteMessages(messages: immutable.Seq[AtomicWrite]): Future[immutable.Seq[Try[Unit]]] = {
     // FIXME do these one at a time rather than all at once to preserve order
     val batches: Seq[Batch] = messages.groupBy(_.persistenceId).values.flatMap { messagesBatch =>
-      messagesBatch.map { aw => 
+      messagesBatch.sortBy(_.persistenceId).map { aw => 
         val batch = new Batch
         aw.payload.foreach { pr =>
           val row =

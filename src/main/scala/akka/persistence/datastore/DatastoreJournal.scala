@@ -27,9 +27,10 @@ class DatastoreJournal(config: Config, configPath: String) extends AsyncWriteJou
   private val dsConfig = DatastoreConfig.builder.requestTimeout(1000)
     .requestRetry(3)
     .project(settings.project)
-    // .host(settings.host)
+    .host(settings.host)
     .credential(GoogleCredential.fromStream(new FileInputStream(new File(settings.credentialsFile)))
-      .createScoped(DatastoreConfig.SCOPES)).build
+    .createScoped(DatastoreConfig.SCOPES))
+    .build()
 
   // FIXME shutdown
   private val datastore = Datastore.create(dsConfig)

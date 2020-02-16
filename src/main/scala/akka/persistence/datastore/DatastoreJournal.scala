@@ -13,8 +13,6 @@ import scala.jdk.CollectionConverters._
 import scala.collection.immutable
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
-import play.api.libs.json.Json
-import play.api.libs.json.JsValue
 
 class DatastoreJournal(config: Config, configPath: String) extends AsyncWriteJournal {
 

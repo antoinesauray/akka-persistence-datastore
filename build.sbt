@@ -8,7 +8,7 @@ val dependencies = Seq(
   "com.typesafe.akka"      %% "akka-stream-testkit"                 % AkkaVersion     % "test",
 
   // Serialization
-  "com.typesafe.play"      %% "play-json"                           % "2.8.1",
+  "com.typesafe.play"      %% "play-json"                           % "2.8.1"         % "test"
   
   "ch.qos.logback"          % "logback-classic"                     % "1.2.3"         % "test",
   "org.scalatest"          %% "scalatest"                           % "3.1.0"         % "test"

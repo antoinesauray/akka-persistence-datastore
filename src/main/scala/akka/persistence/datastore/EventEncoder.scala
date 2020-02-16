@@ -1,11 +1,9 @@
 package akka.persistence.datastore
 
-import scala.reflect.runtime.universe._
-
 trait EventEncoder[T] {
 
 
-  def cast(data: Any)(implicit typeTag: TypeTag[T]): T = data.asInstanceOf[T]
+  def cast(data: Any): T = data.asInstanceOf[T]
 
   
   protected def serialize: PartialFunction[T, String]
@@ -14,7 +12,7 @@ trait EventEncoder[T] {
     * A partial function that serializes an event to a json representation
     * @return the json representation
     */
-  def castAndSerialize(data: Any)(implicit typeTag: TypeTag[T]): String = serialize(cast(data))
+  def castAndSerialize(data: Any): String = serialize(cast(data))
 
 
   /**
